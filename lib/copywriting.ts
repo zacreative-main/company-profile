@@ -67,9 +67,9 @@ export const NAVBAR_COPY = {
  * 3. HERO SECTION (BAGIAN PEMBUKA UTAMA)
  * ============================================================================ */
 export const HERO_COPY = {
-  heading: "Shaping words into visual works.",
+  heading: "Shaping words\ninto visual works",
   description:
-    "Zacreative adalah jasa desain layout buku, laporan, presentasi, poster infografis, dan kebutuhan desain layout lainnya.",
+    "Zacreative adalah jasa desain layout buku, laporan, presentasi, poster infografis, dan kebutuhan desain layout lainnya",
   primaryCtaLabel: "Konsultasi & Pemesanan",
   secondaryPaketLabel: "Lihat Paket",
   secondaryPortfolioLabel: "Lihat Portofolio",
@@ -79,30 +79,7 @@ export const HERO_COPY = {
     { value: "150+", label: "Layout Dibuat" },
     { value: "5+", label: "Tahun Berkarya" },
   ],
-  /** Teks ilustrasi kartu portofolio di sisi kanan Hero (tampil di layar desktop) */
-  showcase: {
-    posterCard: {
-      code: "ZA/26",
-      category: "Poster",
-      line1: "Type",
-      line2: "Sets",
-      line3: "Tone.",
-    },
-    pitchDeckCard: {
-      eyebrow: "Series A · Traction",
-      growthBadge: "+184% YoY",
-      valuation: "$48.2M",
-      valuationLabel: "Valuasi pra-pendanaan",
-      quarters: ["Q1", "Q2", "Q3", "Q4", "Q1", "Q2"],
-    },
-    bookSpreadCard: {
-      chapter: "Bab 03",
-      title: "Hilirisasi dan Masa Depan Industri Nikel",
-      quote: "“Data yang rapi adalah cara terbaik untuk membangun kepercayaan.”",
-      leftPageNumber: "42",
-      rightPageNumber: "43",
-    },
-  },
+
 } as const;
 
 /* ============================================================================

@@ -1,58 +1,64 @@
 import Image from "next/image";
-import { Building2 } from "lucide-react";
 import { TRUST_COPY } from "@/lib/copywriting";
 
 export default function TrustIndicators() {
-  const duplicated = [...TRUST_COPY.clients, ...TRUST_COPY.clients];
+  // Repeat items for ample track width across all screen resolutions
+  const trackItems = [...TRUST_COPY.clients, ...TRUST_COPY.clients];
+
+  const renderLogoTrack = (items: typeof trackItems, prefix: string) =>
+    items.map((c, i) => (
+      <div
+        key={`${prefix}-${c.name}-${i}`}
+        title={c.name}
+        aria-label={c.name}
+        className="shrink-0 flex items-center justify-center px-6 sm:px-8 cursor-default group"
+      >
+        {c.logo ? (
+          <Image
+            src={c.logo}
+            alt={`Logo ${c.name}`}
+            width={160}
+            height={48}
+            unoptimized
+            className="h-8 sm:h-10 w-auto max-w-[120px] sm:max-w-[150px] object-contain transition-transform duration-300 group-hover:scale-105"
+          />
+        ) : (
+          <span className="font-semibold text-xs tracking-wider uppercase text-slate-500 group-hover:text-brand transition-colors">
+            {c.name}
+          </span>
+        )}
+      </div>
+    ));
 
   return (
     <section
-      className="w-full bg-[#134282] text-white py-12 sm:py-16 border-y border-white/10 overflow-hidden"
-      data-purpose="trust-indicators-marquee"
+      className="relative z-20 -mt-8 sm:-mt-10 lg:-mt-12 w-full bg-white dark:bg-zinc-950 rounded-t-[32px] sm:rounded-t-[40px] shadow-[0_-12px_30px_-8px_rgba(11,28,48,0.12),0_-2px_6px_-1px_rgba(11,28,48,0.06)] dark:shadow-[0_-12px_30px_-8px_rgba(0,0,0,0.5)] pt-10 sm:pt-14 pb-12 sm:pb-16 border-b border-slate-200/80 dark:border-zinc-800 overflow-hidden"
+      data-purpose="trust-indicators-curved-section"
+      aria-labelledby="trust-heading"
     >
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12 text-center space-y-6">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12 text-center space-y-6 sm:space-y-8">
+        {/* Section Heading */}
         <div className="flex items-center justify-center gap-2">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#00D2FF] animate-pulse"></span>
-          <h2 className="font-mono text-xs uppercase tracking-widest text-blue-100/90 font-semibold">
+          <h2
+            id="trust-heading"
+            className="font-mono text-xs uppercase tracking-widest text-[#134282] dark:text-blue-300 font-semibold"
+          >
             {TRUST_COPY.heading}
           </h2>
         </div>
 
-        {/* Infinite Marquee Loop */}
-        <div className="relative overflow-hidden w-full marquee-mask py-1">
-          <div className="animate-marquee flex gap-4 sm:gap-6 items-center">
-            {duplicated.map((c, i) => (
-              <div
-                key={`${c.name}-${i}`}
-                className="w-56 sm:w-64 h-16 shrink-0 rounded-xl bg-white border border-slate-200/80 shadow-xs flex items-center px-3.5 hover:shadow-md transition-all group"
-              >
-                <div className="flex items-center gap-3 w-full min-w-0">
-                  {/* Slot Logo Client */}
-                  <div className="w-10 h-10 rounded-lg bg-slate-50 border border-slate-100 flex items-center justify-center shrink-0 overflow-hidden p-1">
-                    {c.logo ? (
-                      <Image
-                        src={c.logo}
-                        alt={`Logo ${c.name}`}
-                        width={40}
-                        height={40}
-                        unoptimized
-                        className="w-full h-full object-contain"
-                      />
-                    ) : (
-                      <Building2 className="w-5 h-5 text-slate-400 group-hover:text-[#134282] transition-colors shrink-0" />
-                    )}
-                  </div>
-                  <div className="text-left min-w-0 flex-1">
-                    <span className="font-sans text-xs sm:text-sm text-black font-bold truncate block">
-                      {c.name}
-                    </span>
-                    <span className="text-[10px] sm:text-[11px] text-slate-600 font-medium block truncate">
-                      {c.desc}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            ))}
+        {/* Infinite Marquee Loop: unboxed, original logo colors, zero empty space */}
+        <div className="relative overflow-hidden w-full marquee-mask py-2">
+          <div className="flex w-max items-center">
+            <div className="flex shrink-0 animate-marquee items-center gap-6 sm:gap-8 pr-6 sm:pr-8">
+              {renderLogoTrack(trackItems, "track-1")}
+            </div>
+            <div
+              className="flex shrink-0 animate-marquee items-center gap-6 sm:gap-8 pr-6 sm:pr-8"
+              aria-hidden="true"
+            >
+              {renderLogoTrack(trackItems, "track-2")}
+            </div>
           </div>
         </div>
       </div>

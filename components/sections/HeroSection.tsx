@@ -8,7 +8,7 @@ import { buildWhatsAppLink } from "@/lib/constants";
 import { HERO_COPY } from "@/lib/copywriting";
 
 const cardBase =
-  "absolute rounded-2xl border border-tint-border bg-white shadow-[0_20px_40px_-15px_rgba(11,28,48,0.12),0_2px_6px_-2px_rgba(11,28,48,0.06)] dark:bg-zinc-900 dark:border-white/10";
+  "absolute rounded-2xl border border-white/20 bg-white shadow-[0_25px_50px_-12px_rgba(5,15,30,0.45)] dark:bg-zinc-900 dark:border-white/20";
 
 /* ───────────── Mockup A: Poster Infografis ───────────── */
 function PosterCard() {
@@ -37,7 +37,7 @@ function PitchDeckCard() {
       aria-hidden="true"
     >
       <Image
-        src="/images/assets/hero/PPT.png"
+        src="/images/assets/hero/buku.png"
         alt="Desain Presentasi PowerPoint Zacreative"
         fill
         sizes="(min-width: 1024px) 390px, 0px"
@@ -56,7 +56,7 @@ function BookSpreadCard() {
       aria-hidden="true"
     >
       <Image
-        src="/images/assets/hero/buku.png"
+        src="/images/assets/hero/PPT.png"
         alt="Desain Layout Buku Zacreative"
         fill
         sizes="(min-width: 1024px) 420px, 0px"
@@ -70,28 +70,81 @@ function BookSpreadCard() {
 export default function HeroSection() {
   return (
     <section
-      className="relative w-full overflow-hidden bg-wash dark:bg-[#070d18] border-b border-tint-border/60 dark:border-white/10 transition-colors"
+      className="relative w-full overflow-hidden bg-[#134282] dark:bg-[#07172e] text-white transition-colors"
       data-purpose="hero-section"
       aria-labelledby="hero-heading"
     >
-      {/* Ambient glow */}
+      {/* ── Accent 1: Ambient Radial Mesh Lighting ── */}
       <div
-        className="pointer-events-none absolute -top-40 right-[-10%] h-[520px] w-[520px] rounded-full bg-sky/15 blur-3xl dark:bg-brand/20"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_75%_65%_at_50%_-10%,rgba(56,132,230,0.35),transparent_70%)]"
         aria-hidden="true"
       />
 
-      <div className="relative max-w-7xl mx-auto px-6 py-16 sm:py-20 lg:py-28">
+      {/* ── Accent 2: Multi-point Glow Auroras ── */}
+      {/* Top right electric cyan glow behind mockups */}
+      <div
+        className="pointer-events-none absolute -top-32 right-[-5%] h-[580px] w-[580px] rounded-full bg-[#00D2FF]/25 blur-[120px] dark:bg-[#00D2FF]/15"
+        aria-hidden="true"
+      />
+      {/* Top left deep indigo glow */}
+      <div
+        className="pointer-events-none absolute -top-40 -left-20 h-[500px] w-[500px] rounded-full bg-[#3b82f6]/20 blur-[130px]"
+        aria-hidden="true"
+      />
+      {/* Subtle brand teal/leaf glow accent */}
+      <div
+        className="pointer-events-none absolute top-1/2 right-1/4 h-[320px] w-[320px] rounded-full bg-[#4fc97a]/10 blur-[100px]"
+        aria-hidden="true"
+      />
+
+      {/* ── Accent 3: Subtle Architectural Editorial Grid ── */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.09] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_45%,#000_65%,transparent_100%)]"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, rgba(255, 255, 255, 0.3) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255, 255, 255, 0.3) 1px, transparent 1px)
+          `,
+          backgroundSize: "44px 44px",
+        }}
+        aria-hidden="true"
+      />
+
+      {/* ── Accent 4: Concentric Orbit Rings (framing the mockups on desktop) ── */}
+      <div className="pointer-events-none absolute right-[5%] top-1/2 -translate-y-1/2 hidden lg:block" aria-hidden="true">
+        <div className="relative h-[620px] w-[620px]">
+          <div className="absolute inset-0 rounded-full border border-white/[0.08]" />
+          <div className="absolute inset-14 rounded-full border border-dashed border-white/[0.07]" />
+          <div className="absolute inset-28 rounded-full border border-white/[0.05]" />
+        </div>
+      </div>
+
+      {/* ── Accent 5: Editorial Crosshair Precision Marks (+) ── */}
+      <div className="pointer-events-none absolute top-10 left-8 hidden lg:block font-mono text-xs text-white/20 select-none" aria-hidden="true">+</div>
+      <div className="pointer-events-none absolute top-10 right-12 hidden lg:block font-mono text-xs text-white/20 select-none" aria-hidden="true">+</div>
+      <div className="pointer-events-none absolute bottom-28 left-12 hidden lg:block font-mono text-xs text-white/15 select-none" aria-hidden="true">+</div>
+
+      <div className="relative max-w-7xl mx-auto px-6 pt-16 sm:pt-20 lg:pt-24 pb-20 sm:pb-24 lg:pb-28">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-12 items-center">
           {/* ───── Left column ───── */}
           <div className="lg:col-span-6 text-left">
+            <p className="text-xs sm:text-sm font-semibold tracking-wider text-blue-200/90 mb-3 sm:mb-4 uppercase font-mono">
+              Jasa Desain Layout & Editorial Profesional
+            </p>
+
             <h1
               id="hero-heading"
-              className="text-4xl sm:text-6xl font-bold tracking-tight leading-tight text-navy dark:text-white"
+              className="text-4xl sm:text-6xl font-bold tracking-tight leading-tight text-white"
             >
-              {HERO_COPY.heading}
+              {HERO_COPY.heading.split(/<br\s*\/?>|\n/).map((line, idx, arr) => (
+                <span key={idx}>
+                  {line}
+                  {idx < arr.length - 1 && <br />}
+                </span>
+              ))}
             </h1>
 
-            <p className="mt-6 max-w-xl text-base sm:text-lg leading-relaxed text-navy-soft dark:text-zinc-300">
+            <p className="mt-6 max-w-xl text-base sm:text-lg leading-relaxed text-blue-100/90 dark:text-blue-200/80">
               {HERO_COPY.description}
             </p>
 
@@ -110,7 +163,7 @@ export default function HeroSection() {
               <Link
                 id="hero-cta-paket"
                 href="/#paket"
-                className="group inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl border border-navy/15 bg-white px-5 sm:px-6 text-sm font-semibold text-navy transition-colors duration-200 hover:border-brand hover:text-brand dark:bg-white/5 dark:border-white/15 dark:text-white dark:hover:border-sky-soft dark:hover:text-sky-soft focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-sky/40 cursor-pointer"
+                className="group inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl border border-white/25 bg-white/10 px-5 sm:px-6 text-sm font-semibold text-white transition-all duration-200 hover:bg-white hover:text-[#134282] hover:border-white focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/40 cursor-pointer backdrop-blur-xs"
               >
                 <LayoutGrid className="h-4 w-4" aria-hidden="true" />
                 {HERO_COPY.secondaryPaketLabel}
@@ -118,7 +171,7 @@ export default function HeroSection() {
               <Link
                 id="hero-cta-portofolio"
                 href="/#portofolio"
-                className="group inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl border border-tint-border bg-white/60 px-5 sm:px-6 text-sm font-semibold text-navy transition-colors duration-200 hover:border-brand hover:text-brand dark:bg-transparent dark:border-white/15 dark:text-white dark:hover:border-sky-soft dark:hover:text-sky-soft focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-sky/40 cursor-pointer"
+                className="group inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 px-5 sm:px-6 text-sm font-semibold text-white/90 transition-all duration-200 hover:bg-white/15 hover:text-white hover:border-white/30 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/40 cursor-pointer backdrop-blur-xs"
               >
                 {HERO_COPY.secondaryPortfolioLabel}
                 <ArrowDown className="h-4 w-4 transition-transform duration-200 group-hover:translate-y-0.5" aria-hidden="true" />
@@ -126,7 +179,7 @@ export default function HeroSection() {
             </div>
 
             {HERO_COPY.onlineStatus && (
-              <p className="mt-4 flex items-center gap-2 text-xs text-navy-soft/80 dark:text-zinc-400">
+              <p className="mt-4 flex items-center gap-2 text-xs text-blue-200/90">
                 <span className="relative flex h-2 w-2" aria-hidden="true">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-leaf opacity-70" />
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-leaf" />
@@ -135,13 +188,13 @@ export default function HeroSection() {
               </p>
             )}
 
-            <dl className="mt-12 grid max-w-md grid-cols-3 divide-x divide-tint-border dark:divide-white/10">
+            <dl className="mt-12 grid max-w-md grid-cols-3 divide-x divide-white/20">
               {HERO_COPY.stats.map((s, i) => (
                 <div key={s.label} className={i === 0 ? "pr-5" : "px-5"}>
-                  <dd className="text-2xl sm:text-3xl font-bold tracking-tight text-navy dark:text-white">
+                  <dd className="text-2xl sm:text-3xl font-bold tracking-tight text-white">
                     {s.value}
                   </dd>
-                  <dt className="mt-1 text-xs text-navy-soft/80 dark:text-zinc-400">{s.label}</dt>
+                  <dt className="mt-1 text-xs text-blue-200/80">{s.label}</dt>
                 </div>
               ))}
             </dl>
