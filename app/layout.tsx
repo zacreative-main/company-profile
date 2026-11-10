@@ -10,6 +10,7 @@ const montserrat = Montserrat({
 });
 import JsonLd from "@/components/seo/JsonLd";
 import { SITE_COPY } from "@/lib/copywriting";
+import { Analytics } from "@vercel/analytics/react";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
@@ -93,6 +94,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col bg-[#f8f9ff] dark:bg-[#070d18] text-[#0b1c30] dark:text-[#f0f4ff] selection:bg-[#dce9ff] dark:selection:bg-[#1a54a4]">
         {children}
+        <Analytics />
       </body>
     </html>
   );
