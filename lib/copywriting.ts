@@ -37,7 +37,7 @@ export const SITE_COPY = {
     instagramHandle: "zacreative.id",
     instagramUrl: "https://www.instagram.com/zacreative.id",
     linkedinUrl: "",
-    email: "hello@zacreative.com",
+    email: "zacreative.id@gmail.com",
   },
   defaultWhatsAppMessage:
     "Halo Zacreative, saya ingin berkonsultasi mengenai layanan desain. Boleh dibantu?",
@@ -81,7 +81,6 @@ export const HERO_COPY = {
   ],
   /** Teks ilustrasi kartu portofolio di sisi kanan Hero (tampil di layar desktop) */
   showcase: {
-    floatingBadge: "PT ANTAM Tbk • 487 Halaman • Selesai 7 Hari",
     posterCard: {
       code: "ZA/26",
       category: "Poster",
@@ -119,16 +118,91 @@ export const TRUST_COPY = {
   heading:
     "DIPERCAYA OLEH KEMENTERIAN, LEMBAGA, BUMN, HINGGA PERUSAHAAN SWASTA",
   clients: [
-    { name: "Kementerian PUPR", desc: "Instansi Pemerintah RI", logo: "" },
-    { name: "PT ANTAM Tbk", desc: "BUMN Pertambangan", logo: "" },
-    { name: "KBRI Damaskus", desc: "Korps Diplomatik RI", logo: "" },
-    { name: "PT JAKPRO", desc: "BUMD DKI Jakarta", logo: "" },
-    { name: "Kemendikbudristek RI", desc: "Ditjen Vokasi", logo: "" },
-    { name: "LPDP Kemenkeu", desc: "Lembaga Riset Beasiswa", logo: "" },
-    { name: "UGM PSE", desc: "Pusat Studi Energi", logo: "" },
-    { name: "Entalphy Consulting", desc: "Konsultan Energi", logo: "" },
-    { name: "Ayo Tumbuh", desc: "Edupreneur Consultancy", logo: "" },
-    { name: "AI-RECHT", desc: "Riset Teknologi AI", logo: "" },
+    {
+      name: "Kementerian Pekerjaan Umum",
+      desc: "Kementerian RI",
+      logo: "/images/assets/partner-logo/kementrianpekerjaanumum.PNG",
+    },
+    {
+      name: "Kementerian Kesehatan",
+      desc: "Kementerian RI",
+      logo: "/images/assets/partner-logo/kemenkes.png",
+    },
+    {
+      name: "Kementerian ESDM",
+      desc: "Kementerian RI",
+      logo: "/images/assets/partner-logo/kementrianesdm.webp",
+    },
+    {
+      name: "Kementerian Investasi / BKPM",
+      desc: "Kementerian RI",
+      logo: "/images/assets/partner-logo/kementrianinvestasidanhilirisasibkpm.png",
+    },
+    {
+      name: "Kemendikbudristek RI",
+      desc: "Kementerian RI",
+      logo: "/images/assets/partner-logo/kemendikbudristkek.png",
+    },
+    {
+      name: "Kementerian PPPA",
+      desc: "Kementerian RI",
+      logo: "/images/assets/partner-logo/kementrianpemberdayaanperempuandanperlindungananak.webp",
+    },
+    {
+      name: "Kementerian PPN / Bappenas",
+      desc: "Lembaga Pemerintah RI",
+      logo: "/images/assets/partner-logo/bappenas.webp",
+    },
+    {
+      name: "BPJS Kesehatan",
+      desc: "Badan Hukum Publik",
+      logo: "/images/assets/partner-logo/bpjskesehatan.png",
+    },
+    {
+      name: "KBRI Damaskus",
+      desc: "Korps Diplomatik RI",
+      logo: "/images/assets/partner-logo/kedubesdamaskussuriah.png",
+    },
+    {
+      name: "PT ANTAM Tbk",
+      desc: "BUMN Pertambangan",
+      logo: "/images/assets/partner-logo/antam.webp",
+    },
+    {
+      name: "PT PLN (Persero)",
+      desc: "BUMN Ketenagalistrikan",
+      logo: "/images/assets/partner-logo/pln.webp",
+    },
+    {
+      name: "PT Pertamina Hulu Energi",
+      desc: "Subholding Upstream Pertamina",
+      logo: "/images/assets/partner-logo/pertaminahuluenergi.png",
+    },
+    {
+      name: "PT Pertamina Gas",
+      desc: "Subholding Gas Pertamina",
+      logo: "/images/assets/partner-logo/pertaminagas.png",
+    },
+    {
+      name: "PT Jakarta Propertindo",
+      desc: "BUMD DKI Jakarta",
+      logo: "/images/assets/partner-logo/jakartapropertindo.png",
+    },
+    {
+      name: "PT Astra International Tbk",
+      desc: "Perusahaan Multinasional",
+      logo: "/images/assets/partner-logo/astra.png",
+    },
+    {
+      name: "PT East West Seed Indonesia",
+      desc: "Cap Panah Merah",
+      logo: "/images/assets/partner-logo/cappanahmerah.webp",
+    },
+    {
+      name: "PSE UGM",
+      desc: "Pusat Studi Energi UGM",
+      logo: "/images/assets/partner-logo/universitasgadjahmadaPSE.png",
+    },
   ] as TrustClient[],
 } as const;
 
@@ -568,7 +642,7 @@ export const FOOTER_COPY = {
   navigationTitle: "Navigasi",
   navigationLinks: [
     { label: "Paket & Harga", href: "/#paket" },
-    { label: "Portofolio", href: "/#portofolio" },
+    { label: "Portofolio", href: "/portofolio" },
     { label: "Cara Order", href: "/#cara-kerja" },
     { label: "FAQ", href: "/#faq" },
   ],

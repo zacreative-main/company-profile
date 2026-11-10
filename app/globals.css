@@ -116,7 +116,7 @@ h1, h2, h3, h4, .font-heading {
 .animate-marquee {
   display: flex;
   width: max-content;
-  animation: marquee 30s linear infinite;
+  animation: marquee 45s linear infinite;
 }
 
 .animate-marquee:hover {
