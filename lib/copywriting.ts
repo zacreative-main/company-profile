@@ -12,24 +12,32 @@ export const SITE_COPY = {
   titleDefault: "Zacreative - Jasa Desain Layout Buku & Presentasi",
   titleTemplate: "%s | Zacreative",
   description:
-    "Jasa desain layout buku, laporan, presentasi, poster infografis, dan kebutuhan desain layout lainnya.",
+    "Jasa desain layout buku, laporan tahunan (annual report), presentasi PowerPoint, pitch deck eksekutif, dan poster infografis profesional.",
   twitterDescription:
-    "Jasa desain layout buku, laporan, presentasi, poster infografis, dan kebutuhan desain layout lainnya.",
+    "Jasa desain layout buku, laporan tahunan, presentasi PowerPoint, pitch deck, dan poster infografis profesional.",
   schemaDescription:
-    "Zacreative adalah jasa desain layout buku, laporan, presentasi, poster infografis, dan kebutuhan desain layout lainnya.",
+    "Zacreative adalah studio desain spesialis layout buku, perwajahan editorial, laporan tahunan instansi & korporasi, slide presentasi PowerPoint, dan infografis visual.",
   keywords: [
     "Zacreative",
+    "zacreative.id",
     "jasa layout buku",
+    "jasa desain layout buku",
     "layout buku",
     "desain buku",
+    "layout buku ber-isbn",
+    "perwajahan buku",
     "layout laporan",
     "desain laporan tahunan",
     "annual report design",
-    "desain presentasi",
+    "laporan keberlanjutan esg",
+    "jasa desain presentasi",
+    "desain presentasi ppt",
+    "jasa pitch deck",
     "desain PowerPoint",
     "desain poster",
     "desain infografis",
-    "editorial design",
+    "editorial design indonesia",
+    "layout buku jakarta",
     "visual communication",
   ],
   contact: {
@@ -70,7 +78,7 @@ export const NAVBAR_COPY = {
 export const HERO_COPY = {
   heading: "Shaping words\ninto stunning works",
   description:
-    "Zacreative adalah jasa desain layout buku, laporan, presentasi, poster infografis, dan kebutuhan desain layout lainnya",
+    "Zacreative adalah jasa desain layout buku, laporan, presentasi,\nposter infografis, dan kebutuhan desain layout lainnya",
   primaryCtaLabel: "Konsultasi & Pemesanan",
   secondaryPaketLabel: "Lihat Paket",
   secondaryPortfolioLabel: "Lihat Portofolio",

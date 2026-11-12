@@ -56,7 +56,7 @@ function BookSpreadCard() {
       aria-hidden="true"
     >
       <Image
-        src="/images/assets/hero/buku.png"
+        src="/images/assets/hero/mockupbuku.png"
         alt="Desain Layout Buku Zacreative"
         fill
         sizes="(min-width: 1024px) 420px, 0px"
@@ -130,18 +130,22 @@ export default function HeroSection() {
           <div className="lg:col-span-6 text-left">
             <h1
               id="hero-heading"
-              className="text-4xl sm:text-6xl font-bold tracking-tight leading-tight text-white"
+              className="text-[clamp(1.75rem,7.8vw,2.25rem)] sm:text-5xl lg:text-[2.75rem] xl:text-[3.25rem] font-bold tracking-tight leading-tight text-white"
             >
-              {HERO_COPY.heading.split(/<br\s*\/?>|\n/).map((line, idx, arr) => (
-                <span key={idx}>
+              {HERO_COPY.heading.split(/<br\s*\/?>|\n/).map((line, idx) => (
+                <span key={idx} className="block whitespace-nowrap">
                   {line}
-                  {idx < arr.length - 1 && <br />}
                 </span>
               ))}
             </h1>
 
-            <p className="mt-6 max-w-xl text-base sm:text-lg font-semibold leading-relaxed text-white">
-              {HERO_COPY.description}
+            <p className="mt-6 max-w-[24.5em] sm:max-w-none text-[clamp(0.775rem,3.6vw,0.9rem)] sm:text-[15px] lg:text-[13.5px] xl:text-base font-semibold leading-relaxed text-white">
+              {HERO_COPY.description.split(/<br\s*\/?>|\n/).map((line, idx, arr) => (
+                <span key={idx} className="sm:block sm:whitespace-nowrap">
+                  {line}
+                  {idx < arr.length - 1 ? " " : ""}
+                </span>
+              ))}
             </p>
 
             <div className="mt-10 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap">

@@ -1,24 +1,38 @@
-import { SITE_COPY } from "@/lib/copywriting";
+import { SITE_COPY, FAQ_COPY } from "@/lib/copywriting";
+import { SITE_URL } from "@/lib/site";
 
 export default function JsonLd() {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+  const baseUrl = SITE_URL;
 
-  const schema = {
+  // 1. Organization & ProfessionalService schema
+  const organizationSchema = {
     "@context": "https://schema.org",
     "@type": ["ProfessionalService", "Organization"],
-    "@id": `${baseUrl}#organization`,
+    "@id": `${baseUrl}/#organization`,
     name: SITE_COPY.name,
-    alternateName: "Zacreative Editorial & Presentation Design",
+    alternateName: ["Zacreative", "Zacreative Studio", "Zacreative Editorial Design"],
     url: baseUrl,
     logo: `${baseUrl}/images/logocolor.webp`,
-    image: `${baseUrl}/images/stitch/home.png`,
+    image: `${baseUrl}/images/og-image.jpg`,
     description: SITE_COPY.schemaDescription,
     email: SITE_COPY.contact.email,
+    telephone: `+${SITE_COPY.contact.whatsappNumber}`,
     priceRange: "$$",
     address: {
       "@type": "PostalAddress",
       addressCountry: "ID",
       addressLocality: "Jakarta",
+    },
+    areaServed: {
+      "@type": "Country",
+      name: "Indonesia",
+    },
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: `+${SITE_COPY.contact.whatsappNumber}`,
+      contactType: "customer service",
+      areaServed: "ID",
+      availableLanguage: ["Indonesian", "English"],
     },
     openingHoursSpecification: [
       {
@@ -34,9 +48,10 @@ export default function JsonLd() {
         closes: "18:00",
       },
     ],
-    sameAs: [SITE_COPY.contact.instagramUrl, SITE_COPY.contact.linkedinUrl].filter(
-      Boolean
-    ),
+    sameAs: [
+      SITE_COPY.contact.instagramUrl,
+      SITE_COPY.contact.linkedinUrl,
+    ].filter(Boolean),
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Layanan Desain Visual Zacreative",
@@ -45,9 +60,9 @@ export default function JsonLd() {
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
-            name: "Layout Buku Editorial",
+            name: "Layout Buku & Laporan Editorial",
             description:
-              "Penataan tipografi dan grid editorial profesional untuk buku cetak maupun digital berstandar publikasi komersial.",
+              "Penataan tipografi dan sistem grid editorial profesional untuk buku cetak, buku digital, modul, dan laporan tahunan instansi.",
           },
         },
         {
@@ -56,26 +71,65 @@ export default function JsonLd() {
             "@type": "Service",
             name: "Presentasi & Pitch Deck Eksekutif",
             description:
-              "Dek presentasi visual berstandar tinggi untuk pitch investor, keynote speaker, dan laporan strategis manajemen.",
+              "Desain presentasi PowerPoint dan pitch deck profesional untuk investor pitch, keynote speaker, dan laporan direksi.",
           },
         },
         {
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
-            name: "Poster & Desain Kampanye Visual",
+            name: "Poster & Desain Infografis",
             description:
-              "Desain poster promosi dan materi kampanye visual yang komunikatif, menarik perhatian, dan berdampak luas.",
+              "Desain poster promosi, materi kampanye visual, dan infografis riset yang komunikatif dan berdampak luas.",
           },
         },
       ],
     },
   };
 
+  // 2. WebSite schema
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${baseUrl}/#website`,
+    url: baseUrl,
+    name: "Zacreative",
+    alternateName: "Zacreative Studio - Jasa Desain Layout Buku & Presentasi",
+    inLanguage: "id-ID",
+    publisher: {
+      "@id": `${baseUrl}/#organization`,
+    },
+  };
+
+  // 3. FAQPage schema (Rich snippets for Google search results)
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": `${baseUrl}/#faq`,
+    mainEntity: FAQ_COPY.items.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.a,
+      },
+    })),
+  };
+
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+    </>
   );
 }

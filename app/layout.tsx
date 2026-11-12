@@ -10,9 +10,10 @@ const montserrat = Montserrat({
 });
 import JsonLd from "@/components/seo/JsonLd";
 import { SITE_COPY } from "@/lib/copywriting";
+import { SITE_URL } from "@/lib/site";
 import { Analytics } from "@vercel/analytics/react";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+const siteUrl = SITE_URL;
 
 export const viewport: Viewport = {
   themeColor: [
@@ -36,6 +37,7 @@ export const metadata: Metadata = {
   creator: SITE_COPY.name,
   publisher: SITE_COPY.name,
   keywords: [...SITE_COPY.keywords],
+  category: "design",
   alternates: {
     canonical: "/",
   },
@@ -48,10 +50,10 @@ export const metadata: Metadata = {
     description: SITE_COPY.description,
     images: [
       {
-        url: "/images/stitch/home.png",
+        url: "/images/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Zacreative Studio Editorial Tech",
+        alt: "Zacreative - Studio Desain Layout Buku & Presentasi",
       },
     ],
   },
@@ -60,7 +62,10 @@ export const metadata: Metadata = {
     title: SITE_COPY.titleDefault,
     description: SITE_COPY.twitterDescription,
     creator: "@zacreative",
-    images: ["/images/stitch/home.png"],
+    images: ["/images/og-image.jpg"],
+  },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined,
   },
   robots: {
     index: true,
