@@ -52,7 +52,7 @@ function PitchDeckCard() {
 function BookSpreadCard() {
   return (
     <div
-      className={`${cardBase} z-30 bottom-0 left-0 w-[74%] aspect-[2596/1480] rotate-[1.5deg] overflow-hidden bg-[#fdfdfb] dark:bg-zinc-900 transition-transform duration-500 ease-out group-hover/stack:translate-y-1`}
+      className="absolute z-30 bottom-0 left-0 w-[74%] aspect-[2596/1480] rotate-[1.5deg] transition-transform duration-500 ease-out group-hover/stack:translate-y-1"
       aria-hidden="true"
     >
       <Image
@@ -60,7 +60,7 @@ function BookSpreadCard() {
         alt="Desain Layout Buku Zacreative"
         fill
         sizes="(min-width: 1024px) 420px, 0px"
-        className="object-cover"
+        className="object-contain drop-shadow-[0_25px_35px_rgba(5,15,30,0.55)]"
         priority
       />
     </div>
