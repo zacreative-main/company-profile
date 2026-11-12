@@ -162,6 +162,7 @@ export default function InstagramFeed({
                     : "(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 33vw"
                 }
                 priority={index < 4}
+                unoptimized={post.imageUrl.startsWith("/api/media/")}
                 className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
               />
 

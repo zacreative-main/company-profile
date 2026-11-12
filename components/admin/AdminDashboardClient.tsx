@@ -696,6 +696,7 @@ export default function AdminDashboardClient({
                             alt={item.note}
                             fill
                             sizes="(max-width: 640px) 100vw, 400px"
+                            unoptimized={item.thumbnailUrl.startsWith("/api/media/")}
                             className="object-cover"
                           />
                         ) : item.syncStatus === "syncing" ? (

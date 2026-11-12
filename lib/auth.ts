@@ -106,11 +106,18 @@ export async function getOrSeedAdminCredentials(): Promise<StoredAdminCredential
     updatedAt: new Date().toISOString(),
   };
 
-  await writeBlobData(
-    CREDENTIALS_BLOB_PATH,
-    encryptCredentials(seeded),
-    "application/octet-stream"
-  );
+  try {
+    await writeBlobData(
+      CREDENTIALS_BLOB_PATH,
+      encryptCredentials(seeded),
+      "application/octet-stream"
+    );
+  } catch (err) {
+    console.warn(
+      "[Auth] Could not persist initial credentials to storage, using environment fallback:",
+      err
+    );
+  }
 
   return seeded;
 }
