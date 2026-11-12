@@ -103,25 +103,22 @@ h1, h2, h3, h4, .font-heading {
   }
 }
 
-/* Marquee infinite scroll */
+/* Marquee infinite scroll (single track translating -50% for seamless sync) */
 @keyframes marquee {
   0% {
-    transform: translateX(0%);
+    transform: translate3d(0, 0, 0);
   }
   100% {
-    transform: translateX(-100%);
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
 .animate-marquee {
   display: flex;
   width: max-content;
-  animation: marquee 45s linear infinite;
+  animation: marquee 40s linear infinite;
   will-change: transform;
-}
-
-.animate-marquee:hover {
-  animation-play-state: paused;
+  backface-visibility: hidden;
 }
 
 .marquee-mask {

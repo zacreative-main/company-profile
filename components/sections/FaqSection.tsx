@@ -25,7 +25,7 @@ export default function FaqSection() {
 
   return (
     <section
-      className="w-full bg-[#F8FAFC] dark:bg-[#070D18] py-14 sm:py-20 border-b border-[#E2E8F0] dark:border-zinc-800 transition-colors text-left"
+      className="w-full bg-white dark:bg-zinc-950 py-14 sm:py-20 border-b border-[#E2E8F0] dark:border-zinc-800 transition-colors text-left"
       id="faq"
       data-purpose="faq-section"
     >

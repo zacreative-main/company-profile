@@ -34,6 +34,7 @@ export const SITE_COPY = {
   ],
   contact: {
     whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "6282128919491",
+    whatsappDisplay: "+62 821 2891 9491",
     instagramHandle: "zacreative.id",
     instagramUrl: "https://www.instagram.com/zacreative.id",
     linkedinUrl: "",
@@ -67,7 +68,7 @@ export const NAVBAR_COPY = {
  * 3. HERO SECTION (BAGIAN PEMBUKA UTAMA)
  * ============================================================================ */
 export const HERO_COPY = {
-  heading: "Shaping words\ninto visual works",
+  heading: "Shaping words\ninto stunning works",
   description:
     "Zacreative adalah jasa desain layout buku, laporan, presentasi, poster infografis, dan kebutuhan desain layout lainnya",
   primaryCtaLabel: "Konsultasi & Pemesanan",
@@ -75,9 +76,9 @@ export const HERO_COPY = {
   secondaryPortfolioLabel: "Lihat Portofolio",
   onlineStatus: "",
   stats: [
-    { value: "50+", label: "Klien Terpuaskan" },
-    { value: "150+", label: "Layout Dibuat" },
-    { value: "5+", label: "Tahun Berkarya" },
+    { value: "80+", label: "Klien Terpuaskan" },
+    { value: "300+", label: "Layout Dibuat" },
+    { value: "6+", label: "Tahun Berkarya" },
   ],
 
 } as const;
@@ -301,7 +302,7 @@ export const PACKAGES_COPY = {
           features: [
             "1x revisi",
             "Pengerjaan 7-10 hari",
-            "Mengubah teks Word ke format PPT+5k/slide",
+            "Mengubah format teks atau Ms. Word menjadi slide presentasi +Rp5.000/slide",
           ],
         },
         {
@@ -315,7 +316,7 @@ export const PACKAGES_COPY = {
             "3x revisi",
             "Pengerjaan 5-7 hari",
             "Custom grafik dan tabel",
-            "Mengubah teks Word ke format PPT+5k/slide",
+            "Mengubah format teks atau Ms. Word menjadi slide presentasi +Rp5.000/slide",
           ],
         },
         {
@@ -330,7 +331,7 @@ export const PACKAGES_COPY = {
             "Revisi sepuasnya",
             "Pengerjaan 3-5 hari",
             "Custom grafik dan tabel",
-            "Mengubah teks Word ke format PPT+5k/slide",
+            "Mengubah format teks atau Ms. Word menjadi slide presentasi +Rp5.000/slide",
           ],
           popular: true,
         },

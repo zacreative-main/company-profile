@@ -22,7 +22,7 @@ export default async function PortofolioPage() {
   const posts = await getPublicPortfolioPosts();
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#F8FAFC] dark:bg-[#070D18]">
+    <div className="flex flex-col min-h-screen bg-white dark:bg-zinc-950">
       <Navbar />
 
       <main className="flex-grow">

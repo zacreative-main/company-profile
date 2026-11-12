@@ -1,24 +1,24 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Mail } from "lucide-react";
-import { InstagramIcon } from "@/components/ui/BrandIcons";
-import { CONTACT } from "@/lib/constants";
+import { InstagramIcon, WhatsAppIcon } from "@/components/ui/BrandIcons";
+import { CONTACT, buildWhatsAppLink } from "@/lib/constants";
 import { FOOTER_COPY } from "@/lib/copywriting";
 
 export default function Footer() {
   return (
     <footer
-      className="bg-white dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800 pt-16 pb-12 transition-colors"
+      className="bg-[#134282] dark:bg-[#07172e] text-white border-t border-white/15 pt-16 pb-12 transition-colors"
       data-purpose="site-footer"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top Section: Brand info & Navigation columns */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-8 lg:gap-12 pb-12 border-b border-zinc-200 dark:border-zinc-800">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-8 lg:gap-12 pb-12 border-b border-white/15">
           {/* Brand Info */}
           <div className="sm:col-span-2 md:col-span-5 space-y-4">
             <Link href="/" className="inline-flex items-center gap-3 group">
               <Image
-                src="/images/logocolor.webp"
+                src="/images/logowhite.webp"
                 alt={FOOTER_COPY.logoAlt}
                 width={142}
                 height={36}
@@ -27,21 +27,21 @@ export default function Footer() {
                 style={{ width: "auto", height: "auto" }}
               />
             </Link>
-            <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 max-w-sm leading-relaxed">
+            <p className="text-xs sm:text-sm text-blue-100/90 max-w-sm leading-relaxed">
               {FOOTER_COPY.brandDescription}
             </p>
           </div>
 
           {/* Navigation Links */}
           <div className="sm:col-span-1 md:col-span-3 space-y-3">
-            <span className="font-mono text-xs uppercase tracking-wider text-zinc-900 dark:text-zinc-100 font-semibold block">
+            <span className="font-mono text-xs uppercase tracking-wider text-white font-semibold block">
               {FOOTER_COPY.navigationTitle}
             </span>
-            <ul className="space-y-2.5 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400">
+            <ul className="space-y-2.5 text-xs sm:text-sm text-blue-100/85">
               {FOOTER_COPY.navigationLinks.map((link) => (
                 <li key={link.label}>
                   <Link
-                    className="hover:text-zinc-900 dark:hover:text-white transition-colors"
+                    className="hover:text-white transition-colors"
                     href={link.href}
                   >
                     {link.label}
@@ -53,21 +53,32 @@ export default function Footer() {
 
           {/* Contact & Social */}
           <div id="kontak" className="sm:col-span-1 md:col-span-4 space-y-3 scroll-mt-28">
-            <span className="font-mono text-xs uppercase tracking-wider text-zinc-900 dark:text-zinc-100 font-semibold block">
+            <span className="font-mono text-xs uppercase tracking-wider text-white font-semibold block">
               {FOOTER_COPY.contactTitle}
             </span>
             {FOOTER_COPY.contactDescription && (
-              <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+              <p className="text-xs sm:text-sm text-blue-100/85 leading-relaxed">
                 {FOOTER_COPY.contactDescription}
               </p>
             )}
             <div className="pt-1 space-y-2.5">
               <div>
                 <a
+                  href={buildWhatsAppLink()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 font-mono text-xs text-blue-100/90 hover:text-white transition-colors"
+                >
+                  <WhatsAppIcon className="w-3.5 h-3.5 shrink-0" />
+                  <span>WhatsApp: {CONTACT.whatsappDisplay}</span>
+                </a>
+              </div>
+              <div>
+                <a
                   href={CONTACT.instagramUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 font-mono text-xs text-zinc-700 dark:text-zinc-300 hover:text-zinc-950 dark:hover:text-white transition-colors"
+                  className="inline-flex items-center gap-2 font-mono text-xs text-blue-100/90 hover:text-white transition-colors"
                 >
                   <InstagramIcon className="w-3.5 h-3.5 shrink-0" />
                   <span>@{CONTACT.instagramHandle}</span>
@@ -76,7 +87,7 @@ export default function Footer() {
               <div>
                 <a
                   href={`mailto:${CONTACT.email}`}
-                  className="inline-flex items-center gap-2 font-mono text-xs text-zinc-700 dark:text-zinc-300 hover:text-zinc-950 dark:hover:text-white transition-colors"
+                  className="inline-flex items-center gap-2 font-mono text-xs text-blue-100/90 hover:text-white transition-colors"
                 >
                   <Mail className="w-3.5 h-3.5 shrink-0" />
                   <span>{CONTACT.email}</span>
@@ -87,14 +98,14 @@ export default function Footer() {
         </div>
 
         {/* Bottom Section: Legal and Copyright metadata */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500 dark:text-zinc-400 text-center sm:text-left">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-blue-200/80 text-center sm:text-left">
           <div>{FOOTER_COPY.copyright}</div>
           <div className="flex items-center gap-6 font-mono text-xs flex-wrap justify-center">
-            <span className="text-zinc-400 dark:text-zinc-600">{FOOTER_COPY.locationTag}</span>
+            <span className="text-blue-200/70">{FOOTER_COPY.locationTag}</span>
             {FOOTER_COPY.legalLinks.map((legal) => (
               <a
                 key={legal.label}
-                className="hover:text-zinc-900 dark:hover:text-white transition-colors"
+                className="hover:text-white transition-colors"
                 href={legal.href}
               >
                 {legal.label}

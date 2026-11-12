@@ -1,34 +1,59 @@
-import Image from "next/image";
 import { TRUST_COPY } from "@/lib/copywriting";
 
-export default function TrustIndicators() {
-  // Repeat items for ample track width across all screen resolutions
-  const trackItems = [...TRUST_COPY.clients, ...TRUST_COPY.clients];
+const LOGO_SIZE_CLASSES: Record<string, string> = {
+  // Square / tall emblems
+  "Kementerian PPN / Bappenas": "h-11 sm:h-14",
+  "Kemendikbudristek RI": "h-11 sm:h-14",
+  "KBRI Damaskus": "h-11 sm:h-14",
+  "PT East West Seed Indonesia": "h-11 sm:h-14",
+  "Kementerian PPPA": "h-11 sm:h-14",
+  // Medium-wide logos
+  "Kementerian ESDM": "h-10 sm:h-12",
+  "PT PLN (Persero)": "h-9 sm:h-11",
+  "PT ANTAM Tbk": "h-9 sm:h-11",
+  "PT Astra International Tbk": "h-8 sm:h-10",
+  // Wide horizontal wordmarks
+  "Kementerian Pekerjaan Umum": "h-9 sm:h-11",
+  "Kementerian Kesehatan": "h-9 sm:h-11",
+  "Kementerian Investasi / BKPM": "h-9 sm:h-11",
+  "PSE UGM": "h-10 sm:h-12",
+  "PT Pertamina Hulu Energi": "h-9 sm:h-11",
+  "PT Jakarta Propertindo": "h-8 sm:h-10",
+  "PT Pertamina Gas": "h-8 sm:h-10",
+  "BPJS Kesehatan": "h-7 sm:h-9",
+};
 
-  const renderLogoTrack = (items: typeof trackItems, prefix: string) =>
-    items.map((c, i) => (
-      <div
-        key={`${prefix}-${c.name}-${i}`}
-        title={c.name}
-        aria-label={c.name}
-        className="shrink-0 flex items-center justify-center px-6 sm:px-8 cursor-default group"
-      >
-        {c.logo ? (
-          <Image
-            src={c.logo}
-            alt={`Logo ${c.name}`}
-            width={160}
-            height={48}
-            unoptimized
-            className="h-8 sm:h-10 w-auto max-w-[120px] sm:max-w-[150px] object-contain transition-transform duration-300 group-hover:scale-105"
-          />
-        ) : (
-          <span className="font-semibold text-xs tracking-wider uppercase text-slate-500 group-hover:text-brand transition-colors">
-            {c.name}
-          </span>
-        )}
-      </div>
-    ));
+export default function TrustIndicators() {
+  const items = TRUST_COPY.clients;
+
+  const renderLogoTrack = (prefix: string) =>
+    items.map((c, i) => {
+      const sizeClass = LOGO_SIZE_CLASSES[c.name] ?? "h-9 sm:h-11";
+      return (
+        <div
+          key={`${prefix}-${c.name}-${i}`}
+          title={c.name}
+          aria-label={c.name}
+          className="shrink-0 flex items-center justify-center px-6 sm:px-9 select-none"
+        >
+          {c.logo ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={c.logo}
+              alt={`Logo ${c.name}`}
+              loading="eager"
+              decoding="async"
+              draggable={false}
+              className={`${sizeClass} w-auto max-w-none object-contain pointer-events-none`}
+            />
+          ) : (
+            <span className="font-semibold text-xs tracking-wider uppercase text-slate-500">
+              {c.name}
+            </span>
+          )}
+        </div>
+      );
+    });
 
   return (
     <section
@@ -47,17 +72,14 @@ export default function TrustIndicators() {
           </h2>
         </div>
 
-        {/* Infinite Marquee Loop: unboxed, original logo colors, zero empty space */}
+        {/* Infinite Marquee Loop: single unified track translating -50% so halves never desync */}
         <div className="relative overflow-hidden w-full marquee-mask py-2">
-          <div className="flex w-max items-center">
-            <div className="flex shrink-0 animate-marquee items-center gap-6 sm:gap-8 pr-6 sm:pr-8">
-              {renderLogoTrack(trackItems, "track-1")}
+          <div className="animate-marquee items-center">
+            <div className="flex shrink-0 items-center">
+              {renderLogoTrack("track-1")}
             </div>
-            <div
-              className="flex shrink-0 animate-marquee items-center gap-6 sm:gap-8 pr-6 sm:pr-8"
-              aria-hidden="true"
-            >
-              {renderLogoTrack(trackItems, "track-2")}
+            <div className="flex shrink-0 items-center" aria-hidden="true">
+              {renderLogoTrack("track-2")}
             </div>
           </div>
         </div>

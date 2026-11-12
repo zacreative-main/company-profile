@@ -25,7 +25,7 @@ export default function ProcessSection() {
 
   return (
     <section
-      className="w-full bg-white dark:bg-zinc-950 py-14 sm:py-20 border-b border-[#E2E8F0] dark:border-zinc-800 transition-colors text-left"
+      className="w-full bg-[#EEF5FF] dark:bg-[#070D18] py-14 sm:py-20 border-b border-[#E2E8F0] dark:border-zinc-800 transition-colors text-left"
       id="cara-kerja"
       data-purpose="process-flow-section"
     >
@@ -47,7 +47,7 @@ export default function ProcessSection() {
             <button
               type="button"
               onClick={toggleAllSteps}
-              className="inline-flex min-h-[42px] items-center justify-center gap-2 rounded-xl border border-slate-200 dark:border-zinc-700 bg-slate-50 dark:bg-zinc-900 px-4 py-2 text-xs sm:text-sm font-semibold text-slate-700 dark:text-zinc-200 hover:border-[#134282] hover:text-[#134282] dark:hover:border-sky-400 dark:hover:text-sky-400 transition-colors cursor-pointer"
+              className="inline-flex min-h-[42px] items-center justify-center gap-2 rounded-xl border border-slate-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-4 py-2 text-xs sm:text-sm font-semibold text-slate-700 dark:text-zinc-200 hover:border-[#134282] hover:text-[#134282] dark:hover:border-sky-400 dark:hover:text-sky-400 transition-colors cursor-pointer"
             >
               <ChevronsUpDown className="w-4 h-4 shrink-0" />
               <span>{allStepsOpen ? "Tutup Semua Detail" : "Buka Semua Detail"}</span>

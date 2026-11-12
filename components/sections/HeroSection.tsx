@@ -14,7 +14,7 @@ const cardBase =
 function PosterCard() {
   return (
     <div
-      className={`${cardBase} right-0 top-0 w-[44%] aspect-[3508/4961] rotate-[4deg] overflow-hidden transition-transform duration-500 ease-out group-hover/stack:rotate-[6deg] group-hover/stack:translate-x-1`}
+      className={`${cardBase} z-10 right-0 top-0 w-[44%] aspect-[3508/4961] rotate-[4deg] overflow-hidden transition-transform duration-500 ease-out group-hover/stack:rotate-[6deg] group-hover/stack:translate-x-1`}
       aria-hidden="true"
     >
       <Image
@@ -33,11 +33,11 @@ function PosterCard() {
 function PitchDeckCard() {
   return (
     <div
-      className={`${cardBase} left-[12%] top-[20%] w-[68%] aspect-[3192/1794] -rotate-[1.5deg] overflow-hidden transition-transform duration-500 ease-out group-hover/stack:-translate-y-1`}
+      className={`${cardBase} z-20 left-[12%] top-[20%] w-[68%] aspect-[3192/1794] -rotate-[1.5deg] overflow-hidden transition-transform duration-500 ease-out group-hover/stack:-translate-y-1`}
       aria-hidden="true"
     >
       <Image
-        src="/images/assets/hero/buku.png"
+        src="/images/assets/hero/PPT.png"
         alt="Desain Presentasi PowerPoint Zacreative"
         fill
         sizes="(min-width: 1024px) 390px, 0px"
@@ -48,15 +48,15 @@ function PitchDeckCard() {
   );
 }
 
-/* ───────────── Mockup C: Editorial book spread ───────────── */
+/* ───────────── Mockup C: Editorial book spread (in front of presentation) ───────────── */
 function BookSpreadCard() {
   return (
     <div
-      className={`${cardBase} bottom-0 left-0 w-[74%] aspect-[2618/1848] rotate-[1.5deg] overflow-hidden bg-[#fdfdfb] dark:bg-zinc-900 transition-transform duration-500 ease-out group-hover/stack:translate-y-1`}
+      className={`${cardBase} z-30 bottom-0 left-0 w-[74%] aspect-[2596/1480] rotate-[1.5deg] overflow-hidden bg-[#fdfdfb] dark:bg-zinc-900 transition-transform duration-500 ease-out group-hover/stack:translate-y-1`}
       aria-hidden="true"
     >
       <Image
-        src="/images/assets/hero/PPT.png"
+        src="/images/assets/hero/buku.png"
         alt="Desain Layout Buku Zacreative"
         fill
         sizes="(min-width: 1024px) 420px, 0px"
@@ -128,10 +128,6 @@ export default function HeroSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-12 items-center">
           {/* ───── Left column ───── */}
           <div className="lg:col-span-6 text-left">
-            <p className="text-xs sm:text-sm font-semibold tracking-wider text-blue-200/90 mb-3 sm:mb-4 uppercase font-mono">
-              Jasa Desain Layout & Editorial Profesional
-            </p>
-
             <h1
               id="hero-heading"
               className="text-4xl sm:text-6xl font-bold tracking-tight leading-tight text-white"
@@ -144,7 +140,7 @@ export default function HeroSection() {
               ))}
             </h1>
 
-            <p className="mt-6 max-w-xl text-base sm:text-lg leading-relaxed text-blue-100/90 dark:text-blue-200/80">
+            <p className="mt-6 max-w-xl text-base sm:text-lg font-semibold leading-relaxed text-white">
               {HERO_COPY.description}
             </p>
 

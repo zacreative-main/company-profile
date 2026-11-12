@@ -86,7 +86,7 @@ export default function PortfolioSection({
       id="portofolio"
       data-purpose="instagram-portfolio-section"
       aria-labelledby="portofolio-heading"
-      className="w-full bg-[#F8FAFC] dark:bg-[#070D18] py-16 sm:py-24 border-b border-[#E2E8F0] dark:border-zinc-800 transition-colors text-left"
+      className="w-full bg-white dark:bg-zinc-950 py-16 sm:py-24 border-b border-[#E2E8F0] dark:border-zinc-800 transition-colors text-left"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 sm:space-y-8">
         {/* Header */}
