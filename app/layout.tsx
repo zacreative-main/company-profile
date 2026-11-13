@@ -50,10 +50,10 @@ export const metadata: Metadata = {
     description: SITE_COPY.description,
     images: [
       {
-        url: "/images/og-image.jpg",
+        url: "/images/thumbnailsocial.png",
         width: 1200,
         height: 630,
-        alt: "Zacreative - Studio Desain Layout Buku & Presentasi",
+        alt: "Zacreative - Jasa Desain Grafis, Layout Buku, Poster & Power Point",
       },
     ],
   },
@@ -79,7 +79,12 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/favicon.ico", sizes: "48x48" },
+      { url: "/icon.png", sizes: "192x192", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
   },
 };
 

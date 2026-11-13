@@ -6,6 +6,7 @@ import {
   ArrowUpRight,
   Check,
 } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/BrandIcons";
 import {
   SERVICE_PACKAGES,
   type PackageTier,
@@ -635,10 +636,11 @@ function TierCard({
         target="_blank"
         rel="noopener noreferrer"
         onClick={(e) => e.stopPropagation()}
-        className={`group/cta mt-6 sm:mt-8 inline-flex min-h-[48px] items-center justify-center gap-1.5 rounded-xl px-4 text-xs sm:text-sm font-bold transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0284C7] ${
+        className={`group/cta mt-6 sm:mt-8 inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl px-4 text-xs sm:text-sm font-bold transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0284C7] ${
           selected ? theme.selectedCta : theme.unselectedCta
         }`}
       >
+        <WhatsAppIcon className="h-4 w-4 shrink-0" aria-hidden="true" />
         <span>
           {PACKAGES_COPY.labels.chooseTierPrefix} {theme.shortTitle}
         </span>

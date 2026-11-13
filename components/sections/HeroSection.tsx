@@ -52,14 +52,14 @@ function PitchDeckCard() {
 function BookSpreadCard() {
   return (
     <div
-      className="absolute z-30 bottom-0 left-0 w-[74%] aspect-[2596/1480] rotate-[1.5deg] transition-transform duration-500 ease-out group-hover/stack:translate-y-1"
+      className="absolute z-30 -bottom-2 -left-3 w-[84%] aspect-[2596/1480] rotate-[1.5deg] transition-transform duration-500 ease-out group-hover/stack:translate-y-1"
       aria-hidden="true"
     >
       <Image
         src="/images/assets/hero/mockupbuku.png"
         alt="Desain Layout Buku Zacreative"
         fill
-        sizes="(min-width: 1024px) 420px, 0px"
+        sizes="(min-width: 1024px) 480px, 0px"
         className="object-contain drop-shadow-[0_25px_35px_rgba(5,15,30,0.55)]"
         priority
       />
@@ -132,9 +132,10 @@ export default function HeroSection() {
               id="hero-heading"
               className="text-[clamp(1.75rem,7.8vw,2.25rem)] sm:text-5xl lg:text-[2.75rem] xl:text-[3.25rem] font-bold tracking-tight leading-tight text-white"
             >
-              {HERO_COPY.heading.split(/<br\s*\/?>|\n/).map((line, idx) => (
+              {HERO_COPY.heading.split(/<br\s*\/?>|\n/).map((line, idx, arr) => (
                 <span key={idx} className="block whitespace-nowrap">
                   {line}
+                  {idx < arr.length - 1 ? " " : ""}
                 </span>
               ))}
             </h1>

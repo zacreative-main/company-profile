@@ -9,19 +9,24 @@ import type { InstagramPost } from "@/lib/data/instagram-fallback";
 export const SITE_COPY = {
   name: "Zacreative Studio",
   shortName: "Zacreative",
-  titleDefault: "Zacreative - Jasa Desain Layout Buku & Presentasi",
+  titleDefault: "Zacreative - Jasa Desain Grafis, Layout Buku, Poster & Power Point",
   titleTemplate: "%s | Zacreative",
   description:
-    "Jasa desain layout buku, laporan tahunan (annual report), presentasi PowerPoint, pitch deck eksekutif, dan poster infografis profesional.",
+    "Jasa Desain Grafis profesional: Jasa Desain Buku, Jasa Desain Layout Buku, Laporan, Jasa Desain Poster Infografis, dan Jasa Desain Power Point / Pitch Deck.",
   twitterDescription:
-    "Jasa desain layout buku, laporan tahunan, presentasi PowerPoint, pitch deck, dan poster infografis profesional.",
+    "Butuh Jasa Desain Layout Buku, Laporan, Poster Infografis, atau Desain Power Point profesional? Dipercaya 80+ kementerian, BUMN & korporasi.",
   schemaDescription:
-    "Zacreative adalah studio desain spesialis layout buku, perwajahan editorial, laporan tahunan instansi & korporasi, slide presentasi PowerPoint, dan infografis visual.",
+    "Zacreative adalah studio Jasa Desain Grafis spesialis Jasa Desain Buku, Jasa Desain Layout Buku, laporan tahunan (annual report), Jasa Desain Poster Infografis, dan Jasa Desain Power Point (PPT & pitch deck).",
   keywords: [
+    "Jasa Desain Grafis",
+    "Jasa Desain Buku",
+    "Jasa Desain Layout Buku",
+    "Jasa Desain Poster",
+    "Jasa Desain Power Point",
+    "Jasa Desain PowerPoint",
     "Zacreative",
     "zacreative.id",
     "jasa layout buku",
-    "jasa desain layout buku",
     "layout buku",
     "desain buku",
     "layout buku ber-isbn",
@@ -33,12 +38,9 @@ export const SITE_COPY = {
     "jasa desain presentasi",
     "desain presentasi ppt",
     "jasa pitch deck",
-    "desain PowerPoint",
-    "desain poster",
-    "desain infografis",
+    "desain poster infografis",
     "editorial design indonesia",
     "layout buku jakarta",
-    "visual communication",
   ],
   contact: {
     whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "6282128919491",

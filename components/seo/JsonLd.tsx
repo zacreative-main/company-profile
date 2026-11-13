@@ -54,33 +54,33 @@ export default function JsonLd() {
     ].filter(Boolean),
     hasOfferCatalog: {
       "@type": "OfferCatalog",
-      name: "Layanan Desain Visual Zacreative",
+      name: "Layanan Jasa Desain Grafis Zacreative",
       itemListElement: [
         {
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
-            name: "Layout Buku & Laporan Editorial",
+            name: "Jasa Desain Buku & Jasa Desain Layout Buku",
             description:
-              "Penataan tipografi dan sistem grid editorial profesional untuk buku cetak, buku digital, modul, dan laporan tahunan instansi.",
+              "Penataan tipografi, cover buku, dan sistem grid editorial profesional untuk buku cetak, buku ber-ISBN, modul pelatihan, dan laporan tahunan instansi.",
           },
         },
         {
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
-            name: "Presentasi & Pitch Deck Eksekutif",
+            name: "Jasa Desain Power Point (PPT) & Pitch Deck",
             description:
-              "Desain presentasi PowerPoint dan pitch deck profesional untuk investor pitch, keynote speaker, dan laporan direksi.",
+              "Desain presentasi PowerPoint dan pitch deck eksekutif berstandar tinggi untuk investor pitch, keynote speaker, dan laporan direksi.",
           },
         },
         {
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
-            name: "Poster & Desain Infografis",
+            name: "Jasa Desain Poster & Infografis",
             description:
-              "Desain poster promosi, materi kampanye visual, dan infografis riset yang komunikatif dan berdampak luas.",
+              "Desain poster promosi, poster penelitian, materi kampanye visual, dan infografis yang komunikatif dan berdampak luas.",
           },
         },
       ],

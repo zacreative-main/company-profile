@@ -1,26 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import { CheckCircle2, ChevronDown, ChevronsUpDown } from "lucide-react";
+import { CheckCircle2, ChevronDown } from "lucide-react";
 import { PROCESS_COPY } from "@/lib/copywriting";
 
 export default function ProcessSection() {
-  const [openSteps, setOpenSteps] = useState<number[]>([0]);
-
-  const allStepsOpen = openSteps.length === PROCESS_COPY.steps.length;
+  const [openSteps, setOpenSteps] = useState<number[]>([]);
 
   const toggleStep = (idx: number) => {
     setOpenSteps((prev) =>
       prev.includes(idx) ? prev.filter((i) => i !== idx) : [...prev, idx]
     );
-  };
-
-  const toggleAllSteps = () => {
-    if (allStepsOpen) {
-      setOpenSteps([]);
-    } else {
-      setOpenSteps(PROCESS_COPY.steps.map((_, idx) => idx));
-    }
   };
 
   return (
@@ -30,7 +20,7 @@ export default function ProcessSection() {
       data-purpose="process-flow-section"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 sm:space-y-8">
-        {/* Header Bar with Shrink & Expand Controls */}
+        {/* Header Bar */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <div className="space-y-2 max-w-2xl">
             {PROCESS_COPY.badge && (
@@ -41,17 +31,6 @@ export default function ProcessSection() {
             <h2 className="text-2xl sm:text-4xl font-bold tracking-tight text-[#0F172A] dark:text-white">
               {PROCESS_COPY.heading}
             </h2>
-          </div>
-
-          <div className="flex flex-wrap items-center gap-2.5 shrink-0">
-            <button
-              type="button"
-              onClick={toggleAllSteps}
-              className="inline-flex min-h-[42px] items-center justify-center gap-2 rounded-xl border border-slate-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-4 py-2 text-xs sm:text-sm font-semibold text-slate-700 dark:text-zinc-200 hover:border-[#134282] hover:text-[#134282] dark:hover:border-sky-400 dark:hover:text-sky-400 transition-colors cursor-pointer"
-            >
-              <ChevronsUpDown className="w-4 h-4 shrink-0" />
-              <span>{allStepsOpen ? "Tutup Semua Detail" : "Buka Semua Detail"}</span>
-            </button>
           </div>
         </div>
 
