@@ -1,11 +1,22 @@
 "use client";
 
-import { useState } from "react";
-import { CheckCircle2, ChevronDown } from "lucide-react";
+import { useEffect, useState } from "react";
+import { CheckCircle2, ChevronDown, Triangle } from "lucide-react";
 import { PROCESS_COPY } from "@/lib/copywriting";
 
 export default function ProcessSection() {
   const [openSteps, setOpenSteps] = useState<number[]>([]);
+  const [sectionOpen, setSectionOpen] = useState(false);
+
+  // Buka otomatis bila pengunjung datang lewat tautan #cara-kerja (navbar/footer)
+  useEffect(() => {
+    const syncWithHash = () => {
+      if (window.location.hash === "#cara-kerja") setSectionOpen(true);
+    };
+    syncWithHash();
+    window.addEventListener("hashchange", syncWithHash);
+    return () => window.removeEventListener("hashchange", syncWithHash);
+  }, []);
 
   const toggleStep = (idx: number) => {
     setOpenSteps((prev) =>
@@ -19,25 +30,58 @@ export default function ProcessSection() {
       id="cara-kerja"
       data-purpose="process-flow-section"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 sm:space-y-8">
-        {/* Header Bar */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header Bar (klik judul / segitiga untuk membuka tahapan) */}
+        <button
+          type="button"
+          onClick={() => setSectionOpen((v) => !v)}
+          aria-expanded={sectionOpen}
+          aria-controls="cara-kerja-list"
+          className="group w-full flex items-start justify-between gap-4 text-left cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1A54A4] rounded-xl"
+        >
           <div className="space-y-2 max-w-2xl">
             {PROCESS_COPY.badge && (
               <span className="font-mono text-xs uppercase tracking-wider text-[#1A54A4] dark:text-[#38BDF8] font-semibold block">
                 {PROCESS_COPY.badge}
               </span>
             )}
-            <h2 className="text-2xl sm:text-4xl font-bold tracking-tight text-[#0F172A] dark:text-white">
+            <h2 className="text-2xl sm:text-4xl font-bold tracking-tight text-[#0F172A] dark:text-white group-hover:text-[#1A54A4] dark:group-hover:text-[#38BDF8] transition-colors">
               {PROCESS_COPY.heading}
             </h2>
+            {PROCESS_COPY.description && (
+              <p className="text-sm sm:text-base text-[#64748B] dark:text-zinc-400 leading-relaxed">
+                {PROCESS_COPY.description}
+              </p>
+            )}
           </div>
-        </div>
+          <span
+            aria-hidden="true"
+            className={`mt-1 sm:mt-2 inline-flex h-9 w-9 sm:h-11 sm:w-11 items-center justify-center rounded-xl border shrink-0 transition-all duration-300 ${
+              sectionOpen
+                ? "bg-[#1A54A4] border-[#1A54A4] text-white dark:bg-[#38BDF8] dark:border-[#38BDF8] dark:text-[#0F172A]"
+                : "bg-white dark:bg-zinc-900 border-[#E2E8F0] dark:border-zinc-700 text-[#1A54A4] dark:text-[#38BDF8] group-hover:border-[#1A54A4]"
+            }`}
+          >
+            <Triangle
+              className={`h-3 w-3 sm:h-3.5 sm:w-3.5 fill-current transition-transform duration-300 ${
+                sectionOpen ? "rotate-180" : "rotate-90"
+              }`}
+            />
+          </span>
+        </button>
 
         {/* 5-Step Accordion List */}
         <div
+          className={`grid transition-[grid-template-rows,opacity,margin] duration-300 ease-out ${
+            sectionOpen
+              ? "grid-rows-[1fr] opacity-100 mt-6 sm:mt-8"
+              : "grid-rows-[0fr] opacity-0 mt-0"
+          }`}
+        >
+        <div className="overflow-hidden" inert={!sectionOpen}>
+        <div
           id="cara-kerja-list"
-          className="space-y-3 w-full animate-in fade-in slide-in-from-top-2 duration-200"
+          className="space-y-3 w-full"
         >
             {PROCESS_COPY.steps.map((st, idx) => {
               const isOpen = openSteps.includes(idx);
@@ -109,6 +153,8 @@ export default function ProcessSection() {
               );
             })}
           </div>
+        </div>
+        </div>
       </div>
     </section>
   );

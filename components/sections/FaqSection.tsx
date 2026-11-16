@@ -1,11 +1,22 @@
 "use client";
 
-import { useState } from "react";
-import { Plus, Minus } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Plus, Minus, Triangle } from "lucide-react";
 import { FAQ_COPY } from "@/lib/copywriting";
 
 export default function FaqSection() {
   const [openIndices, setOpenIndices] = useState<number[]>([]);
+  const [sectionOpen, setSectionOpen] = useState(false);
+
+  // Buka otomatis bila pengunjung datang lewat tautan #faq (navbar/footer)
+  useEffect(() => {
+    const syncWithHash = () => {
+      if (window.location.hash === "#faq") setSectionOpen(true);
+    };
+    syncWithHash();
+    window.addEventListener("hashchange", syncWithHash);
+    return () => window.removeEventListener("hashchange", syncWithHash);
+  }, []);
 
   const toggleFaq = (idx: number) => {
     setOpenIndices((prev) =>
@@ -19,15 +30,50 @@ export default function FaqSection() {
       id="faq"
       data-purpose="faq-section"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 sm:space-y-8">
-        {/* Header Bar */}
-        <div className="space-y-2 max-w-2xl">
-          <h2 className="text-2xl sm:text-4xl font-bold tracking-tight text-[#0F172A] dark:text-white">
-            {FAQ_COPY.heading}
-          </h2>
-        </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header Bar (klik judul / segitiga untuk membuka daftar pertanyaan) */}
+        <button
+          type="button"
+          onClick={() => setSectionOpen((v) => !v)}
+          aria-expanded={sectionOpen}
+          aria-controls="faq-list"
+          className="group w-full flex items-start justify-between gap-4 text-left cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1A54A4] rounded-xl"
+        >
+          <div className="space-y-2 max-w-2xl">
+            <h2 className="text-2xl sm:text-4xl font-bold tracking-tight text-[#0F172A] dark:text-white group-hover:text-[#1A54A4] dark:group-hover:text-[#38BDF8] transition-colors">
+              {FAQ_COPY.heading}
+            </h2>
+            {FAQ_COPY.description && (
+              <p className="text-sm sm:text-base text-[#64748B] dark:text-zinc-400 leading-relaxed">
+                {FAQ_COPY.description}
+              </p>
+            )}
+          </div>
+          <span
+            aria-hidden="true"
+            className={`mt-1 sm:mt-2 inline-flex h-9 w-9 sm:h-11 sm:w-11 items-center justify-center rounded-xl border shrink-0 transition-all duration-300 ${
+              sectionOpen
+                ? "bg-[#1A54A4] border-[#1A54A4] text-white dark:bg-[#38BDF8] dark:border-[#38BDF8] dark:text-[#0F172A]"
+                : "bg-white dark:bg-zinc-900 border-[#E2E8F0] dark:border-zinc-700 text-[#1A54A4] dark:text-[#38BDF8] group-hover:border-[#1A54A4]"
+            }`}
+          >
+            <Triangle
+              className={`h-3 w-3 sm:h-3.5 sm:w-3.5 fill-current transition-transform duration-300 ${
+                sectionOpen ? "rotate-180" : "rotate-90"
+              }`}
+            />
+          </span>
+        </button>
 
-        {/* Accordion Q&A list (questions visible, answers collapsed by default) */}
+        {/* Accordion Q&A list (tersembunyi hingga judul diklik; tetap ada di DOM untuk SEO) */}
+        <div
+          className={`grid transition-[grid-template-rows,opacity,margin] duration-300 ease-out ${
+            sectionOpen
+              ? "grid-rows-[1fr] opacity-100 mt-6 sm:mt-8"
+              : "grid-rows-[0fr] opacity-0 mt-0"
+          }`}
+        >
+        <div className="overflow-hidden" inert={!sectionOpen}>
         <div id="faq-list" className="space-y-3 w-full">
           {FAQ_COPY.items.map((faq, idx) => {
             const isOpen = openIndices.includes(idx);
@@ -72,6 +118,8 @@ export default function FaqSection() {
               </div>
             );
           })}
+        </div>
+        </div>
         </div>
       </div>
     </section>

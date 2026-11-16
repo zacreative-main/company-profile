@@ -1,11 +1,11 @@
 import type { MetadataRoute } from "next";
+import { SITE_COPY } from "@/lib/copywriting";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Zacreative - Jasa Desain Grafis, Layout Buku, Poster & Power Point",
+    name: SITE_COPY.titleDefault,
     short_name: "Zacreative",
-    description:
-      "Jasa Desain Grafis profesional: Jasa Desain Buku, Jasa Desain Layout Buku, Laporan, Jasa Desain Poster Infografis, dan Jasa Desain Power Point.",
+    description: SITE_COPY.description,
     start_url: "/",
     display: "standalone",
     background_color: "#070d18",

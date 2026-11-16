@@ -305,6 +305,11 @@ export default function PackagesSection() {
           >
             {PACKAGES_COPY.heading}
           </h2>
+          {PACKAGES_COPY.description && (
+            <p className="mt-2 sm:mt-3 max-w-2xl text-sm sm:text-base text-slate-600 dark:text-zinc-400 leading-relaxed">
+              {PACKAGES_COPY.description}
+            </p>
+          )}
         </div>
 
         {/* ── Category / Service Selector (Biru Terang Solid pada Kategori Terpilih) ── */}

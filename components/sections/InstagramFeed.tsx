@@ -163,7 +163,7 @@ export default function InstagramFeed({
                 }
                 priority={index < 4}
                 unoptimized={post.imageUrl.startsWith("/api/media/")}
-                className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                className="object-cover object-center transition-transform duration-500 ease-out group-hover:scale-105"
               />
 
               {/* Contained Top Bar: Category Pill (left) + Media Type Badge (right) */}

@@ -697,7 +697,7 @@ export default function AdminDashboardClient({
                             fill
                             sizes="(max-width: 640px) 100vw, 400px"
                             unoptimized={item.thumbnailUrl.startsWith("/api/media/")}
-                            className="object-cover"
+                            className="object-cover object-center"
                           />
                         ) : item.syncStatus === "syncing" ? (
                           <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center gap-2">
@@ -768,17 +768,25 @@ export default function AdminDashboardClient({
                               <span>Edit</span>
                             </button>
 
-                            {item.syncStatus === "failed" && (
-                              <button
-                                type="button"
-                                onClick={() => void handleRetrySync(item.id)}
-                                disabled={isBusy}
-                                className="inline-flex min-h-[36px] items-center gap-1 rounded-lg bg-amber-50 dark:bg-amber-950/50 border border-amber-200 dark:border-amber-800 px-2.5 py-1.5 text-xs font-semibold text-amber-800 dark:text-amber-300 hover:bg-amber-100 transition-colors cursor-pointer"
-                              >
-                                <RefreshCw className="h-3.5 w-3.5" />
-                                <span>Ulangi</span>
-                              </button>
-                            )}
+                            {item.syncStatus !== "syncing" &&
+                              !item.shortcode.startsWith("ig-fallback-") && (
+                                <button
+                                  type="button"
+                                  onClick={() => void handleRetrySync(item.id)}
+                                  disabled={isBusy}
+                                  title="Ambil ulang gambar dari Instagram"
+                                  className={`inline-flex min-h-[36px] items-center gap-1 rounded-lg px-2.5 py-1.5 text-xs font-semibold transition-colors cursor-pointer ${
+                                    item.syncStatus === "failed"
+                                      ? "bg-amber-50 dark:bg-amber-950/50 border border-amber-200 dark:border-amber-800 text-amber-800 dark:text-amber-300 hover:bg-amber-100"
+                                      : "border border-[#E2E8F0] dark:border-zinc-700 text-navy-soft dark:text-zinc-300 hover:border-brand hover:text-brand"
+                                  }`}
+                                >
+                                  <RefreshCw className="h-3.5 w-3.5" />
+                                  <span>
+                                    {item.syncStatus === "failed" ? "Ulangi" : "Sync IG"}
+                                  </span>
+                                </button>
+                              )}
 
                             <button
                               type="button"

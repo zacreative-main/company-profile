@@ -9,14 +9,14 @@ import type { InstagramPost } from "@/lib/data/instagram-fallback";
 export const SITE_COPY = {
   name: "Zacreative Studio",
   shortName: "Zacreative",
-  titleDefault: "Zacreative - Jasa Desain Grafis, Layout Buku, Poster & Power Point",
+  titleDefault: "Zacreative - Desain Layout Buku & Presentasi",
   titleTemplate: "%s | Zacreative",
   description:
-    "Jasa Desain Grafis profesional: Jasa Desain Buku, Jasa Desain Layout Buku, Laporan, Jasa Desain Poster Infografis, dan Jasa Desain Power Point / Pitch Deck.",
+    "Jasa desain layout buku, laporan, presentasi, poster infografis, dan kebutuhan desain layout lainnya.",
   twitterDescription:
-    "Butuh Jasa Desain Layout Buku, Laporan, Poster Infografis, atau Desain Power Point profesional? Dipercaya 80+ kementerian, BUMN & korporasi.",
+    "Jasa desain layout buku, laporan, presentasi, poster infografis, dan kebutuhan desain layout lainnya.",
   schemaDescription:
-    "Zacreative adalah studio Jasa Desain Grafis spesialis Jasa Desain Buku, Jasa Desain Layout Buku, laporan tahunan (annual report), Jasa Desain Poster Infografis, dan Jasa Desain Power Point (PPT & pitch deck).",
+    "Zacreative adalah jasa desain layout buku, laporan, presentasi, poster infografis, dan kebutuhan desain layout lainnya.",
   keywords: [
     "Jasa Desain Grafis",
     "Jasa Desain Buku",
@@ -200,7 +200,8 @@ export const TRUST_COPY = {
 export const PACKAGES_COPY = {
   badge: "",
   heading: "Layanan & Pilihan Paket",
-  description: "Pilih layanan dan paket sesuai kebutuhan proyek Anda.",
+  description:
+    "Temukan berbagai layanan desain Zacreative dengan pilihan paket yang fleksibel untuk memenuhi kebutuhan Anda.",
   mobileCategoryNames: {
     "layout-buku": "Layout Buku",
     presentasi: "Presentasi",
@@ -413,7 +414,7 @@ export const PORTFOLIO_COPY = {
   badge: "[PORTOFOLIO]",
   heading: "Karya Terbaru Zacreative",
   description:
-    "Cuplikan publikasi buku, pitch deck, dan kampanye visual terbaru yang kami sinkronkan langsung dari Instagram resmi ZaCreative.",
+    "Jelajahi berbagai karya yang telah kami kerjakan bersama klien dari beragam industri dan institusi.",
   followButtonPrefix: "Follow",
   viewMoreLabel: "Lihat Selengkapnya",
   viewMoreHref: "/portofolio",
@@ -529,7 +530,7 @@ export const PROCESS_COPY = {
   badge: "",
   heading: "Cara Order di Zacreative",
   description:
-    "Mulai dari konsultasi melalui WhatsApp hingga desain final diterima, berikut tahapan pemesanan layanan Zacreative.",
+    "Mulai proyek desain Anda dengan mudah melalui alur pemesanan yang praktis, mulai dari konsultasi kebutuhan hingga pengiriman desain final.",
   deliverablePrefix: "",
   steps: [
     {
@@ -586,7 +587,7 @@ export const FAQ_COPY = {
   badge: "[TANYA JAWAB UMUM]",
   heading: "Pertanyaan yang Sering Diajukan",
   description:
-    "Informasi transparan mengenai standar pengerjaan, perjanjian kerahasiaan, berkas master, dan alur teknis percetakan kami.",
+    "Temukan informasi seputar layanan, proses pengerjaan, dan ketentuan kerja sama Zacreative melalui pertanyaan yang paling sering diajukan.",
   whatsappBox: {
     badge: "Fast Response (WhatsApp)",
     heading: "Punya pertanyaan spesifik terkait naskah Anda?",

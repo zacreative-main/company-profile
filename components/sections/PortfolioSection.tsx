@@ -98,6 +98,11 @@ export default function PortfolioSection({
             >
               {PORTFOLIO_COPY.heading}
             </h2>
+            {PORTFOLIO_COPY.description && (
+              <p className="text-sm sm:text-base text-slate-600 dark:text-zinc-400 leading-relaxed">
+                {PORTFOLIO_COPY.description}
+              </p>
+            )}
           </div>
 
           <a

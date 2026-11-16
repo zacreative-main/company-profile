@@ -1,12 +1,16 @@
 import type { Metadata, Viewport } from "next";
-import { Montserrat } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+// Self-hosted Montserrat (variable 400–800, subset latin) — tidak perlu
+// mengunduh dari Google Fonts saat dev/build, jadi aman saat offline/proxy.
+const montserrat = localFont({
+  src: "./fonts/Montserrat-latin-var.woff2",
+  weight: "400 800",
+  style: "normal",
   variable: "--font-montserrat",
   display: "swap",
+  fallback: ["system-ui", "Segoe UI", "Roboto", "Arial", "sans-serif"],
 });
 import JsonLd from "@/components/seo/JsonLd";
 import { SITE_COPY } from "@/lib/copywriting";
@@ -50,10 +54,10 @@ export const metadata: Metadata = {
     description: SITE_COPY.description,
     images: [
       {
-        url: "/images/thumbnailsocial.png",
+        url: "/images/og-thumbnail.jpg",
         width: 1200,
         height: 630,
-        alt: "Zacreative - Jasa Desain Grafis, Layout Buku, Poster & Power Point",
+        alt: SITE_COPY.titleDefault,
       },
     ],
   },
@@ -62,7 +66,14 @@ export const metadata: Metadata = {
     title: SITE_COPY.titleDefault,
     description: SITE_COPY.twitterDescription,
     creator: "@zacreative",
-    images: ["/images/og-image.jpg"],
+    images: [
+      {
+        url: "/images/og-thumbnail.jpg",
+        width: 1200,
+        height: 630,
+        alt: SITE_COPY.titleDefault,
+      },
+    ],
   },
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined,
