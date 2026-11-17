@@ -3,12 +3,13 @@
 import { useEffect, useState } from "react";
 import { WhatsAppIcon } from "@/components/ui/BrandIcons";
 import { buildWhatsAppLink } from "@/lib/constants";
-import { SITE_COPY } from "@/lib/copywriting";
+import { useCopy } from "@/lib/i18n";
 
 const SHOW_AFTER_PX = 420;
 
 export default function FloatingWhatsApp() {
   const [visible, setVisible] = useState(false);
+  const { site: SITE_COPY } = useCopy();
 
   useEffect(() => {
     const onScroll = () => {
@@ -30,7 +31,7 @@ export default function FloatingWhatsApp() {
     >
       <a
         id="floating-whatsapp-cta"
-        href={buildWhatsAppLink()}
+        href={buildWhatsAppLink(SITE_COPY.defaultWhatsAppMessage)}
         target="_blank"
         rel="noopener noreferrer"
         aria-label={SITE_COPY.floatingWhatsApp.ariaLabel}

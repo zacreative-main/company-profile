@@ -2,6 +2,7 @@
 
 import { useSyncExternalStore } from "react";
 import { Sun, Moon } from "lucide-react";
+import { useCopy } from "@/lib/i18n";
 
 function subscribe(callback: () => void) {
   window.addEventListener("storage", callback);
@@ -28,6 +29,7 @@ function getServerSnapshot(): "light" | "dark" {
 
 export default function ThemeToggle() {
   const currentTheme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  const { ui } = useCopy();
 
   const toggleTheme = () => {
     const nextTheme = currentTheme === "light" ? "dark" : "light";
@@ -46,8 +48,8 @@ export default function ThemeToggle() {
       onClick={toggleTheme}
       aria-label={
         currentTheme === "light"
-          ? "Beralih ke mode gelap"
-          : "Beralih ke mode terang"
+          ? ui.themeSwitchToDark
+          : ui.themeSwitchToLight
       }
       className="w-9 h-9 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 hover:text-zinc-950 dark:hover:text-white hover:border-zinc-500 dark:hover:border-zinc-500 flex items-center justify-center transition-colors focus:outline-none focus:ring-2 focus:ring-zinc-400"
     >

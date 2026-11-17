@@ -5,7 +5,7 @@ import Link from "next/link";
 import { ArrowDown, ArrowUpRight, LayoutGrid } from "lucide-react";
 import { WhatsAppIcon } from "@/components/ui/BrandIcons";
 import { buildWhatsAppLink } from "@/lib/constants";
-import { HERO_COPY } from "@/lib/copywriting";
+import { useCopy } from "@/lib/i18n";
 
 const cardBase =
   "absolute rounded-2xl border border-white/20 bg-white shadow-[0_25px_50px_-12px_rgba(5,15,30,0.45)] dark:bg-zinc-900 dark:border-white/20";
@@ -68,6 +68,8 @@ function BookSpreadCard() {
 }
 
 export default function HeroSection() {
+  const { hero: HERO_COPY, site: SITE_COPY } = useCopy();
+
   return (
     <section
       className="relative w-full overflow-hidden bg-[#134282] dark:bg-[#07172e] text-white transition-colors"
@@ -152,7 +154,7 @@ export default function HeroSection() {
             <div className="mt-10 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap">
               <a
                 id="hero-cta-whatsapp"
-                href={buildWhatsAppLink()}
+                href={buildWhatsAppLink(SITE_COPY.defaultWhatsAppMessage)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group col-span-2 inline-flex min-h-[52px] items-center justify-center gap-2.5 rounded-xl bg-[#4fc97a] px-7 text-sm font-semibold text-white shadow-[0_12px_28px_-10px_rgba(79,201,122,0.6)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#43b36c] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#4fc97a]/40 cursor-pointer"

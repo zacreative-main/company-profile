@@ -1,11 +1,14 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { Mail } from "lucide-react";
 import { InstagramIcon, WhatsAppIcon } from "@/components/ui/BrandIcons";
 import { CONTACT, buildWhatsAppLink } from "@/lib/constants";
-import { FOOTER_COPY } from "@/lib/copywriting";
+import { useCopy } from "@/lib/i18n";
 
 export default function Footer() {
+  const { footer: FOOTER_COPY, site: SITE_COPY } = useCopy();
   return (
     <footer
       className="bg-[#134282] dark:bg-[#07172e] text-white border-t border-white/15 pt-16 pb-12 transition-colors"
@@ -64,7 +67,7 @@ export default function Footer() {
             <div className="pt-1 space-y-2.5">
               <div>
                 <a
-                  href={buildWhatsAppLink()}
+                  href={buildWhatsAppLink(SITE_COPY.defaultWhatsAppMessage)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 font-mono text-xs text-blue-100/90 hover:text-white transition-colors"

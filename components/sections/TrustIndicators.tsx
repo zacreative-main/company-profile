@@ -1,4 +1,6 @@
-import { TRUST_COPY } from "@/lib/copywriting";
+"use client";
+
+import { useCopy } from "@/lib/i18n";
 
 const LOGO_SIZE_CLASSES: Record<string, string> = {
   // Square / tall emblems
@@ -24,6 +26,7 @@ const LOGO_SIZE_CLASSES: Record<string, string> = {
 };
 
 export default function TrustIndicators() {
+  const { trust: TRUST_COPY } = useCopy();
   const items = TRUST_COPY.clients;
 
   const renderLogoTrack = (prefix: string) =>

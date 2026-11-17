@@ -4,7 +4,7 @@ import Image from "next/image";
 import { ArrowUpRight, Images, Play } from "lucide-react";
 import { InstagramIcon } from "@/components/ui/BrandIcons";
 import { CONTACT } from "@/lib/constants";
-import { PORTFOLIO_COPY } from "@/lib/copywriting";
+import { useCopy } from "@/lib/i18n";
 import type {
   InstagramMediaType,
   InstagramPost,
@@ -17,6 +17,7 @@ interface InstagramFeedProps {
 }
 
 function MediaTypeBadge({ type }: { type: InstagramMediaType }) {
+  const { portfolio: PORTFOLIO_COPY } = useCopy();
   if (type === "CAROUSEL_ALBUM") {
     return (
       <span
@@ -88,6 +89,7 @@ export function InstagramFeedSkeleton({
 
 
 export function InstagramFeedEmpty() {
+  const { portfolio: PORTFOLIO_COPY } = useCopy();
   return (
     <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-navy/20 dark:border-white/15 bg-white/50 dark:bg-zinc-900/40 p-8 sm:p-12 text-center">
       <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-brand/10 dark:bg-sky-soft/10 text-brand dark:text-sky-soft mb-4">
@@ -121,6 +123,8 @@ export default function InstagramFeed({
   isLoading,
   columns = 4,
 }: InstagramFeedProps) {
+  const { portfolio: PORTFOLIO_COPY } = useCopy();
+
   if (isLoading) {
     return <InstagramFeedSkeleton count={columns} columns={columns} />;
   }
@@ -170,7 +174,7 @@ export default function InstagramFeed({
               <div className="absolute inset-x-2 top-2 sm:inset-x-3 sm:top-3 z-10 flex items-start justify-between gap-1.5 sm:gap-2 pointer-events-none">
                 {post.categoryTag ? (
                   <span className="min-w-0 max-w-[70%] sm:max-w-[72%] truncate rounded-full bg-white/95 dark:bg-zinc-950/90 backdrop-blur-xs px-2 py-0.5 sm:px-2.5 sm:py-1 text-[9px] sm:text-[10px] font-mono font-semibold text-navy dark:text-sky-soft border border-black/5 dark:border-white/10 shadow-2xs">
-                    {post.categoryTag}
+                    {PORTFOLIO_COPY.categoryLabels[post.categoryTag] ?? post.categoryTag}
                   </span>
                 ) : (
                   <span />

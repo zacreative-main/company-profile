@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import PageBreadcrumb from "@/components/layout/PageBreadcrumb";
 import PortfolioSection from "@/components/sections/PortfolioSection";
 import { getPublicPortfolioPosts } from "@/lib/portfolio-store";
 import { PORTFOLIO_COPY } from "@/lib/copywriting";
@@ -27,19 +26,7 @@ export default async function PortofolioPage() {
 
       <main className="flex-grow">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12">
-          <div className="flex items-center gap-2 text-xs font-mono text-slate-500 dark:text-zinc-400">
-            <Link
-              href="/"
-              className="inline-flex items-center gap-1 hover:text-[#134282] dark:hover:text-white transition-colors"
-            >
-              <ArrowLeft className="w-3.5 h-3.5" />
-              <span>Beranda</span>
-            </Link>
-            <span>/</span>
-            <span className="text-slate-800 dark:text-zinc-200 font-semibold">
-              Portofolio
-            </span>
-          </div>
+          <PageBreadcrumb pageKey="portfolioLabel" />
         </div>
 
         <PortfolioSection posts={posts} showAll />

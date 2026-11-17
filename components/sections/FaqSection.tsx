@@ -2,9 +2,10 @@
 
 import { useEffect, useState } from "react";
 import { Plus, Minus, Triangle } from "lucide-react";
-import { FAQ_COPY } from "@/lib/copywriting";
+import { useCopy } from "@/lib/i18n";
 
 export default function FaqSection() {
+  const { faq: FAQ_COPY } = useCopy();
   const [openIndices, setOpenIndices] = useState<number[]>([]);
   const [sectionOpen, setSectionOpen] = useState(false);
 

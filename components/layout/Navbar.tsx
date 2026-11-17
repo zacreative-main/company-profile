@@ -5,12 +5,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import ThemeToggle from "@/components/ui/ThemeToggle";
+import LanguageToggle from "@/components/ui/LanguageToggle";
 import { WhatsAppIcon } from "@/components/ui/BrandIcons";
 import { buildWhatsAppLink } from "@/lib/constants";
-import { NAVBAR_COPY } from "@/lib/copywriting";
+import { useCopy } from "@/lib/i18n";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { navbar: NAVBAR_COPY, site: SITE_COPY } = useCopy();
 
   return (
     <header
@@ -54,9 +56,10 @@ export default function Navbar() {
 
         {/* Primary Action CTA & Theme Toggle (Desktop) */}
         <div className="hidden md:flex items-center gap-3" data-purpose="header-cta">
+          <LanguageToggle />
           <ThemeToggle />
           <a
-            href={buildWhatsAppLink()}
+            href={buildWhatsAppLink(SITE_COPY.defaultWhatsAppMessage)}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-leaf-strong hover:bg-leaf-hover text-white text-sm font-semibold transition-colors shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-leaf"
@@ -69,6 +72,7 @@ export default function Navbar() {
 
         {/* Mobile Action Buttons */}
         <div className="flex md:hidden items-center gap-2">
+          <LanguageToggle />
           <ThemeToggle />
           <button
             type="button"

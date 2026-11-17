@@ -2,9 +2,10 @@
 
 import { useEffect, useState } from "react";
 import { CheckCircle2, ChevronDown, Triangle } from "lucide-react";
-import { PROCESS_COPY } from "@/lib/copywriting";
+import { useCopy } from "@/lib/i18n";
 
 export default function ProcessSection() {
+  const { process: PROCESS_COPY } = useCopy();
   const [openSteps, setOpenSteps] = useState<number[]>([]);
   const [sectionOpen, setSectionOpen] = useState(false);
 
@@ -125,7 +126,7 @@ export default function ProcessSection() {
                         }`}
                     >
                       <span className="hidden sm:inline">
-                        {isOpen ? "Tutup" : "Detail"}
+                        {isOpen ? PROCESS_COPY.closeLabel : PROCESS_COPY.detailLabel}
                       </span>
                       <ChevronDown
                         className={`w-4 h-4 transition-transform duration-200 ${isOpen ? "rotate-180" : ""

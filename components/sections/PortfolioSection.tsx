@@ -5,9 +5,8 @@ import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { InstagramIcon } from "@/components/ui/BrandIcons";
 import { CONTACT } from "@/lib/constants";
-import { PORTFOLIO_COPY } from "@/lib/copywriting";
+import { useCopy } from "@/lib/i18n";
 import {
-  INSTAGRAM_FALLBACK_POSTS,
   type InstagramPost,
 } from "@/lib/data/instagram-fallback";
 import {
@@ -27,6 +26,7 @@ export default function PortfolioSection({
   isLoading,
   showAll = false,
 }: PortfolioSectionProps) {
+  const { portfolio: PORTFOLIO_COPY } = useCopy();
   const [livePosts, setLivePosts] = useState<InstagramPost[] | null>(null);
   const posts = livePosts ?? initialPosts;
 
@@ -59,8 +59,8 @@ export default function PortfolioSection({
   }, []);
 
   const sourcePosts = useMemo(
-    () => (posts && posts.length > 0 ? posts : INSTAGRAM_FALLBACK_POSTS),
-    [posts]
+    () => (posts && posts.length > 0 ? posts : PORTFOLIO_COPY.fallbackPosts),
+    [posts, PORTFOLIO_COPY.fallbackPosts]
   );
 
   const categoryCounts = useMemo(() => {
@@ -79,7 +79,7 @@ export default function PortfolioSection({
         ? sourcePosts
         : sourcePosts.filter((p) => p.categoryTag === selectedCategory);
     return showAll ? filtered : filtered.slice(0, PORTFOLIO_COPY.maxItems);
-  }, [sourcePosts, selectedCategory, showAll]);
+  }, [sourcePosts, selectedCategory, showAll, PORTFOLIO_COPY.maxItems]);
 
   return (
     <section
@@ -139,7 +139,7 @@ export default function PortfolioSection({
                     : "text-slate-600 hover:text-slate-900 hover:bg-white/80 dark:text-zinc-300 dark:hover:text-white dark:hover:bg-zinc-800"
                 }`}
               >
-                <span>Semua Karya</span>
+                <span>{PORTFOLIO_COPY.allWorksLabel}</span>
                 <span
                   className={`inline-flex items-center justify-center rounded-full px-1.5 py-0.5 text-[10px] sm:text-[11px] font-mono font-bold tabular-nums ${
                     selectedCategory === "ALL"
@@ -154,6 +154,7 @@ export default function PortfolioSection({
               {PORTFOLIO_CATEGORIES.map((cat) => {
                 const isActive = selectedCategory === cat;
                 const count = categoryCounts[cat] ?? 0;
+                const displayCat = PORTFOLIO_COPY.categoryLabels[cat] ?? cat;
                 return (
                   <button
                     key={cat}
@@ -167,7 +168,7 @@ export default function PortfolioSection({
                         : "text-slate-600 hover:text-slate-900 hover:bg-white/80 dark:text-zinc-300 dark:hover:text-white dark:hover:bg-zinc-800"
                     }`}
                   >
-                    <span className="truncate">{cat}</span>
+                    <span className="truncate">{displayCat}</span>
                     <span
                       className={`inline-flex items-center justify-center rounded-full px-1.5 py-0.5 text-[10px] sm:text-[11px] font-mono font-bold tabular-nums ${
                         isActive

@@ -8,13 +8,12 @@ import {
 } from "lucide-react";
 import { WhatsAppIcon } from "@/components/ui/BrandIcons";
 import {
-  SERVICE_PACKAGES,
   type PackageTier,
   type ServicePackage,
   type TierId,
 } from "@/lib/data/packages";
 import { buildWhatsAppLink } from "@/lib/constants";
-import { PACKAGES_COPY } from "@/lib/copywriting";
+import { useCopy } from "@/lib/i18n";
 
 interface TierStyleConfig {
   shortTitle: string;
@@ -192,6 +191,9 @@ const TIER_STYLES: Record<TierId, TierStyleConfig> = {
 };
 
 export default function PackagesSection() {
+  const { packages: PACKAGES_COPY } = useCopy();
+  const SERVICE_PACKAGES = PACKAGES_COPY.services;
+
   const [active, setActive] = useState(0);
   const [activeTier, setActiveTier] = useState(() =>
     Math.max(
@@ -217,7 +219,7 @@ export default function PackagesSection() {
       setActiveTier(popularIdx);
       if (focus) tabRefs.current[next]?.focus();
     },
-    [total]
+    [total, SERVICE_PACKAGES]
   );
 
   const scrollRailToIndex = useCallback((index: number, behavior: ScrollBehavior = "smooth") => {
@@ -525,6 +527,7 @@ function TierCard({
   selected: boolean;
   onSelect: () => void;
 }) {
+  const { packages: PACKAGES_COPY } = useCopy();
   const popular = !!tier.popular;
   const theme = TIER_STYLES[tier.id];
 
