@@ -12,6 +12,20 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/portofolio",
   },
+  openGraph: {
+    title: "Portofolio Karya | Zacreative",
+    description: PORTFOLIO_COPY.description,
+    url: "/portofolio",
+    images: [
+      {
+        url: "/images/og-thumbnail.jpg",
+        type: "image/jpeg",
+        width: 1200,
+        height: 630,
+        alt: "Portofolio Karya Zacreative",
+      },
+    ],
+  },
 };
 
 export const dynamic = "force-dynamic";

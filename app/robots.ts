@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: "*",
-        allow: "/",
+        allow: ["/", "/favicon.ico", "/icon.png", "/apple-icon.png", "/images/"],
         disallow: [
           "/admin",
           "/admin/",
@@ -18,13 +18,17 @@ export default function robots(): MetadataRoute.Robots {
       },
       {
         userAgent: "Googlebot",
-        allow: "/",
+        allow: ["/", "/favicon.ico", "/icon.png", "/apple-icon.png", "/images/"],
         disallow: [
           "/admin/",
           "/admin/*",
           "/api/",
           "/api/*",
         ],
+      },
+      {
+        userAgent: ["Googlebot-Image", "Google-Favicon"],
+        allow: ["/", "/favicon.ico", "/icon.png", "/apple-icon.png", "/images/"],
       },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,

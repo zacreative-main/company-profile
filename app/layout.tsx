@@ -55,6 +55,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/images/og-thumbnail.jpg",
+        secureUrl: `${siteUrl}/images/og-thumbnail.jpg`,
+        type: "image/jpeg",
         width: 1200,
         height: 630,
         alt: SITE_COPY.titleDefault,
@@ -69,6 +71,7 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/images/og-thumbnail.jpg",
+        type: "image/jpeg",
         width: 1200,
         height: 630,
         alt: SITE_COPY.titleDefault,
@@ -84,6 +87,7 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
+      noimageindex: false,
       "max-video-preview": -1,
       "max-image-preview": "large",
       "max-snippet": -1,
@@ -91,10 +95,10 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "48x48" },
+      { url: "/favicon.ico", sizes: "48x48", type: "image/x-icon" },
       { url: "/icon.png", sizes: "192x192", type: "image/png" },
     ],
-    shortcut: "/favicon.ico",
+    shortcut: [{ url: "/favicon.ico", type: "image/x-icon" }],
     apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
   },
 };
